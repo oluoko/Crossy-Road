@@ -10,7 +10,7 @@ export function Truck(initialTileIndex, direction, color) {
   const cargo = new THREE.Mesh(
     new THREE.BoxGeometry(70, 35, 35),
     new THREE.MeshLambertMaterial({
-      color: 0x909090,
+      color: 0x505050,
       flatShading: true,
     })
   );
@@ -33,7 +33,7 @@ export function Truck(initialTileIndex, direction, color) {
 
   const cabinTop = new THREE.Mesh(
     new THREE.BoxGeometry(27, 30, 10),
-    new THREE.MeshLambertMaterial({ color: "white", flatShading: true })
+    new THREE.MeshLambertMaterial({ color: "darkgray", flatShading: true })
   );
   cabinTop.position.x = 35;
   cabinTop.position.z = 33;

@@ -1,4 +1,4 @@
-// import * as THREE from "three";
+import * as THREE from "three";
 
 // export const player = Player();
 
@@ -11,11 +11,11 @@
 //     })
 //   );
 //   body.position.z = 10;
+//   body.castShadow = true;
+//   body.receiveShadow = true;
 
 //   return body;
 // }
-
-import * as THREE from "three";
 
 export const player = Player();
 
@@ -23,16 +23,13 @@ function Player() {
   // Create a group to hold all body parts
   const player = new THREE.Group();
 
-  // Rotate player to face the road
-  player.rotation.z = Math.PI / 2;
-
   // Colors
   const skinColor = 0xf5d0a9;
   const shirtColor = 0x3498db;
   const pantsColor = 0x2c3e50;
   const shoesColor = 0x4b3621;
 
-  // Body - increased size
+  // Body
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(10, 10, 18),
     new THREE.MeshLambertMaterial({
@@ -45,7 +42,7 @@ function Player() {
   body.receiveShadow = true;
   player.add(body);
 
-  // Head - increased size
+  // Head
   const head = new THREE.Mesh(
     new THREE.BoxGeometry(9, 9, 9),
     new THREE.MeshLambertMaterial({
@@ -58,7 +55,20 @@ function Player() {
   head.receiveShadow = true;
   player.add(head);
 
-  // Legs - increased size
+  // hair
+  const hair = new THREE.Mesh(
+    new THREE.BoxGeometry(9, 9, 3),
+    new THREE.MeshLambertMaterial({
+      color: 0x000000,
+      flatShading: true,
+    })
+  );
+  hair.position.z = 43;
+  hair.castShadow = true;
+  hair.receiveShadow = true;
+  player.add(hair);
+
+  // Legs
   const leftLeg = new THREE.Mesh(
     new THREE.BoxGeometry(6, 5, 15),
     new THREE.MeshLambertMaterial({
@@ -112,9 +122,9 @@ function Player() {
   rightArm.receiveShadow = true;
   player.add(rightArm);
 
-  // Shoes - increased size
+  // Shoes
   const leftShoe = new THREE.Mesh(
-    new THREE.BoxGeometry(8, 5, 6),
+    new THREE.BoxGeometry(10, 5, 6),
     new THREE.MeshLambertMaterial({
       color: shoesColor,
       flatShading: true,
@@ -127,7 +137,7 @@ function Player() {
   player.add(leftShoe);
 
   const rightShoe = new THREE.Mesh(
-    new THREE.BoxGeometry(8, 5, 3),
+    new THREE.BoxGeometry(10, 5, 6),
     new THREE.MeshLambertMaterial({
       color: shoesColor,
       flatShading: true,
@@ -149,7 +159,7 @@ function Player() {
   );
   leftEye.position.x = 6;
   leftEye.position.y = 3;
-  leftEye.position.z = 37;
+  leftEye.position.z = 39;
   player.add(leftEye);
 
   const rightEye = new THREE.Mesh(
@@ -161,8 +171,31 @@ function Player() {
   );
   rightEye.position.x = 6;
   rightEye.position.y = -3;
-  rightEye.position.z = 37;
+  rightEye.position.z = 39;
   player.add(rightEye);
 
+  // facing the player in the right direction
+  player.rotateZ(-Math.PI / 2);
+
   return player;
+}
+
+export const position = {
+  currentRow: 0,
+  currentTile: 0,
+};
+
+export const movesQueue = [];
+
+export function queueMove(direction) {
+  movesQueue.push(direction);
+}
+
+export function stepCompleted() {
+  const direction = movesQueue.shift();
+
+  if (direction === "forward") position.currentRow += 1;
+  if (direction === "backward") position.currentRow -= 1;
+  if (direction === "left") position.currentTile -= 1;
+  if (direction === "right") position.currentTile += 1;
 }

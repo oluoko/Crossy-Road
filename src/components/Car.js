@@ -19,7 +19,7 @@ export function Car(initialTileIndex, direction, color) {
   const cabin = new THREE.Mesh(
     new THREE.BoxGeometry(33, 24, 12),
     new THREE.MeshLambertMaterial({
-      color: "white",
+      color: "darkgray",
       flatShading: true,
     })
   );
