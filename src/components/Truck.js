@@ -17,6 +17,8 @@ export function Truck(initialTileIndex, direction, color) {
 
   cargo.position.x = -15;
   cargo.position.z = 25;
+  cargo.castShadow = true;
+  cargo.receiveShadow = true;
   truck.add(cargo);
 
   const cabinBottom = new THREE.Mesh(
@@ -25,6 +27,8 @@ export function Truck(initialTileIndex, direction, color) {
   );
   cabinBottom.position.x = 35;
   cabinBottom.position.z = 20;
+  cabinBottom.castShadow = true;
+  cabinBottom.receiveShadow = true;
   truck.add(cabinBottom);
 
   const cabinTop = new THREE.Mesh(
@@ -33,6 +37,8 @@ export function Truck(initialTileIndex, direction, color) {
   );
   cabinTop.position.x = 35;
   cabinTop.position.z = 33;
+  cabinTop.castShadow = true;
+  cabinTop.receiveShadow = true;
   truck.add(cabinTop);
 
   const frontWheel = Wheel(37);

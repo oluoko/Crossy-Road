@@ -11,6 +11,8 @@ export function Wheel(x) {
   );
   wheel.position.x = x;
   wheel.position.z = 8;
+  wheel.castShadow = true;
+  wheel.receiveShadow = true;
 
   return wheel;
 }

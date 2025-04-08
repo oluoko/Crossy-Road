@@ -41,6 +41,8 @@ function Player() {
     })
   );
   body.position.z = 22;
+  body.castShadow = true;
+  body.receiveShadow = true;
   player.add(body);
 
   // Head - increased size
@@ -52,6 +54,8 @@ function Player() {
     })
   );
   head.position.z = 37;
+  head.castShadow = true;
+  head.receiveShadow = true;
   player.add(head);
 
   // Legs - increased size
@@ -64,6 +68,8 @@ function Player() {
   );
   leftLeg.position.y = 3;
   leftLeg.position.z = 7.5;
+  leftLeg.castShadow = true;
+  leftLeg.receiveShadow = true;
   player.add(leftLeg);
 
   const rightLeg = new THREE.Mesh(
@@ -75,6 +81,8 @@ function Player() {
   );
   rightLeg.position.y = -3;
   rightLeg.position.z = 7.5;
+  rightLeg.castShadow = true;
+  rightLeg.receiveShadow = true;
   player.add(rightLeg);
 
   // Arms - now at the sides
@@ -87,6 +95,8 @@ function Player() {
   );
   leftArm.position.y = 7.5;
   leftArm.position.z = 22;
+  leftArm.castShadow = true;
+  leftArm.receiveShadow = true;
   player.add(leftArm);
 
   const rightArm = new THREE.Mesh(
@@ -98,6 +108,8 @@ function Player() {
   );
   rightArm.position.y = -7.5;
   rightArm.position.z = 22;
+  rightArm.castShadow = true;
+  rightArm.receiveShadow = true;
   player.add(rightArm);
 
   // Shoes - increased size
@@ -110,6 +122,8 @@ function Player() {
   );
   leftShoe.position.y = 3;
   leftShoe.position.z = 1.5;
+  leftShoe.castShadow = true;
+  leftShoe.receiveShadow = true;
   player.add(leftShoe);
 
   const rightShoe = new THREE.Mesh(
@@ -121,6 +135,8 @@ function Player() {
   );
   rightShoe.position.y = -3;
   rightShoe.position.z = 1.5;
+  rightShoe.castShadow = true;
+  rightShoe.receiveShadow = true;
   player.add(rightShoe);
 
   // Face details (eyes)

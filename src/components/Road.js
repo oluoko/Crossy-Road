@@ -11,6 +11,7 @@ export function Road(rowIndex) {
       color: 0x454a59,
     })
   );
+  foundation.receiveShadow = true;
   road.add(foundation);
 
   return road;
