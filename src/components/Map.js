@@ -9,10 +9,10 @@ export const metadata = [
   {
     type: "car",
     direction: true,
-    speed: 1,
+    speed: 188,
     vehicles: [
       { initialTileIndex: -3, color: 0xff0000 },
-      { initialTileIndex: 3, color: 0xff0000 },
+      { initialTileIndex: 3, color: 0x00ff00 },
       { initialTileIndex: 7, color: 0x0000ff },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata = [
   {
     type: "truck",
     direction: true,
-    speed: 0,
+    speed: 125,
     vehicles: [
       { initialTileIndex: -4, color: 0x00ff00 },
       { initialTileIndex: 2, color: 0xf3e03b },
@@ -79,6 +79,7 @@ export function addRows() {
           rowData.direction,
           vehicle.color
         );
+        vehicle.ref = car;
         row.add(car);
       });
       map.add(row);
@@ -93,6 +94,7 @@ export function addRows() {
           rowData.direction,
           vehicle.color
         );
+        vehicle.ref = truck;
         row.add(truck);
       });
       map.add(row);
