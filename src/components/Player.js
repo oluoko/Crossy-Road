@@ -158,7 +158,10 @@ function Player() {
   rightEye.position.z = 39;
   player.add(rightEye);
 
-  return player;
+  const playerContainer = new THREE.Group();
+  playerContainer.add(player);
+
+  return playerContainer;
 }
 
 export const position = {
