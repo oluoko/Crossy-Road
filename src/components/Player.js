@@ -174,9 +174,6 @@ function Player() {
   rightEye.position.z = 39;
   player.add(rightEye);
 
-  // facing the player in the right direction
-  player.rotateZ(-Math.PI / 2);
-
   return player;
 }
 
