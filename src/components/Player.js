@@ -186,6 +186,8 @@ export function queueMove(direction) {
   movesQueue.push(direction);
 }
 
+let highestScore = 0;
+
 export function stepCompleted() {
   const direction = movesQueue.shift();
 
@@ -196,4 +198,12 @@ export function stepCompleted() {
 
   // Add new rows if the player is running out of them
   if (position.currentRow > rows.length - 10) addRows();
+
+  if (position.currentRow > highestScore) {
+    highestScore = position.currentRow;
+  }
+  const scoreDOM = document.getElementById("score");
+  if (scoreDOM) {
+    scoreDOM.innerText = `Score: ${highestScore}`;
+  }
 }
