@@ -1,21 +1,5 @@
 import * as THREE from "three";
-
-// export const player = Player();
-
-// function Player() {
-//   const body = new THREE.Mesh(
-//     new THREE.BoxGeometry(15, 15, 25),
-//     new THREE.MeshLambertMaterial({
-//       color: "white",
-//       flatShading: true,
-//     })
-//   );
-//   body.position.z = 10;
-//   body.castShadow = true;
-//   body.receiveShadow = true;
-
-//   return body;
-// }
+import { endsUpInValidPosition } from "../utilities/endsUpInValidPosition";
 
 export const player = Player();
 
@@ -185,6 +169,16 @@ export const position = {
 export const movesQueue = [];
 
 export function queueMove(direction) {
+  const isValidMove = endsUpInValidPosition(
+    {
+      rowIndex: position.currentRow,
+      tileIndex: position.currentTile,
+    },
+    [...movesQueue, direction]
+  );
+
+  if (!isValidMove) return;
+
   movesQueue.push(direction);
 }
 
