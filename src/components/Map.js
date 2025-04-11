@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { Grass } from "./Grass";
+import { Ground } from "./Ground";
 import { Tree } from "./Tree";
 import { Road } from "./Road";
 import { Car } from "./Car";
@@ -48,9 +49,10 @@ export const metadata = [
 export const map = new THREE.Group();
 
 export function initializeMap() {
-  for (let rowIndex = 0; rowIndex > -5; rowIndex--) {
-    const grass = new Grass(rowIndex);
-    map.add(grass);
+  map.add(new Grass(0));
+  for (let rowIndex = -1; rowIndex > -6; rowIndex--) {
+    const ground = new Ground(rowIndex);
+    map.add(ground);
   }
   addRows();
 }
