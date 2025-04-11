@@ -13,6 +13,9 @@ export const metadata = [];
 export const map = new THREE.Group();
 
 export function initializeMap() {
+  metadata.length = 0;
+  map.remove(...map.children);
+
   map.add(new Grass(0));
   for (let rowIndex = -1; rowIndex > -6; rowIndex--) {
     const ground = new Ground(rowIndex);
